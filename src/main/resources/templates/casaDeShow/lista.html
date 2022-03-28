@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}"
+>
+<meta charset="UTF-8">
+<div layout:fragment="content">
+    <div class="alert alert-primary" th:if="${#lists.isEmpty(lista)}">
+        Nenhuma casa de show cadastrada
+    </div>
+    <div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+    <div th:if="${not #lists.isEmpty(lista)}">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Opções</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="casaDeShow : ${lista}">
+                <td th:text="${casaDeShow.id}"></td>
+                <td th:text="${casaDeShow.nome}"></td>
+                <td th:text="${casaDeShow.endereco}"></td>
+                <td>
+                    <a class="btn btn-primary btn-sm" th:href="@{/casadeshow/form(id=${casaDeShow.id})}">Editar</a>
+                    <a class="btn btn-primary btn-sm" th:href="@{/casadeshow/excluir(id=${casaDeShow.id})}"
+                       onclick="return confirm('Você realmente deseja excluir essa casa de show?')">Excluir</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</html>
