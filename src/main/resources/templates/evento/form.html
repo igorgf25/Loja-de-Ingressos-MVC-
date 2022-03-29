@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}"
+>
+<meta charset="UTF-8">
+<div layout:fragment="content">
+    <div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}">
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <p class="text-primary">Evento</p>
+        </div>
+        <div class="card-body">
+            <form method="POST" th:object="${evento}" th:action="@{/evento/form}">
+                <input type="hidden" th:field="*{id}"></input>
+                <div class="form-group mb-3">
+                    <label for="nome">Nome: </label>
+                    <input class="form-control" th:field="*{nome}" type="text" required></input>
+                    <div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="capacidade">Capacidade: </label>
+                    <input class="form-control" th:field="*{capacidade}" type="number" required></input>
+                    <div class="text-danger" th:if="${#fields.hasErrors('capacidade')}" th:errors="*{capacidade}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="data">Data: </label>
+                    <input class="form-control" id="_data" type="text" required></input>
+                    <input type="hidden" th:field="*{data}">
+                    <div class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="valorIngresso">Valor do ingresso: </label>
+                    <input class="form-control" th:field="*{valorIngresso}" type="text" required></input>
+                    <div class="text-danger" th:if="${#fields.hasErrors('valorIngresso')}"
+                         th:errors="*{valorIngresso}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="casaDeShow">Casa de Show: </label>
+                    <select th:field="*{casaDeShow}" class="form-select">
+                        <option th:each="casaDeShow: ${listaCasa}" th:value="${casaDeShow.id}"
+                                th:text="${casaDeShow.nome}"></option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="generoMusical">Genero Musical: </label>
+                    <select th:field="*{estiloMusical}" class="form-select">
+                        <option th:each="genero: ${listaGeneros}" th:value="${genero}"
+                                th:text="${genero.nome}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div layout:fragment="scripts">
+    <script>
+        $(function() {
+        $("#_data").datepicker({
+            dateFormat:"dd/mm/yy",
+            altFormat:"yy-mm-dd",
+            altField:"#data"
+        });
+        });
+
+    </script>
+</div>
+
+</html>
