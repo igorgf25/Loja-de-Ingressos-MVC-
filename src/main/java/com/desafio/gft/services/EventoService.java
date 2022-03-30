@@ -31,4 +31,9 @@ public class EventoService {
     public List<Evento> listaEventos() {
         return eventoRepository.findAll();
     }
+
+    public void excluirEvento(Long id) {
+        eventoRepository.deleteById(id);
+    }
+
 }

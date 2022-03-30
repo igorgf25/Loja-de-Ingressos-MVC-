@@ -6,10 +6,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -23,6 +20,10 @@ public class Evento {
 
     @NotEmpty(message = "Nome do evento não pode estar vazio")
     private String nome;
+
+    @NotEmpty(message = "Descrição do evento não pode estar vazio")
+    @Size(max = 255)
+    private String descricao;
 
     @Min(value = 1, message = "A capacidade do evento deve no minimo 1")
     private Long capacidade;
@@ -38,6 +39,9 @@ public class Evento {
 
     @ManyToOne
     private CasaDeShow casaDeShow;
+
+    @Lob
+    private byte[] foto;
 
 
 }

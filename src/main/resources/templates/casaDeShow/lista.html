@@ -5,11 +5,11 @@
 >
 <meta charset="UTF-8">
 <div layout:fragment="content">
-    <div class="alert alert-primary" th:if="${#lists.isEmpty(lista)}">
+    <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${#lists.isEmpty(lista)}">
         Nenhuma casa de show cadastrada
     </div>
-    <div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}"></div>
-    <div th:if="${not #lists.isEmpty(lista)}">
+    <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+    <div class="mb-4" style="margin-top:80px" th:if="${not #lists.isEmpty(lista)}">
         <table class="table table-striped">
             <thead>
             <tr>

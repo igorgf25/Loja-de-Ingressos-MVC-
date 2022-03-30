@@ -7,9 +7,9 @@
 <div layout:fragment="content">
     <div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}">
     </div>
-    <div class="card">
+    <div class="card mb-4" style="margin-top:80px">
         <div class="card-header">
-            <p class="text-primary">Casa de Show</p>
+            <p class="text-center fs-4">Casa de Show</p>
         </div>
         <div class="card-body">
             <form method="POST" th:object="${casaDeShow}" th:action="@{/casadeshow/form}">
