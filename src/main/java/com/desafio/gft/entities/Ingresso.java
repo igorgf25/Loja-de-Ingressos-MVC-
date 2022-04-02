@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
@@ -22,6 +19,7 @@ import java.util.Date;
 public class Ingresso {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty(message = "Nome do ingresso é obrigatório")
@@ -41,4 +39,8 @@ public class Ingresso {
 
     @ManyToOne
     private Usuario usuario;
+
+    @ManyToOne
+    private Evento evento;
+
 }

@@ -8,7 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,6 +34,8 @@ public class Evento {
     @FutureOrPresent(message = "Não é possivel marcar eventos em uma data anterior a hoje")
     private Date data;
 
+    private LocalTime horas;
+
     @DecimalMin(value = "0.00", message = "Valor minimo do ingresso: R$0,00")
     private BigDecimal valorIngresso;
 
@@ -42,6 +46,9 @@ public class Evento {
 
     @Lob
     private byte[] foto;
+
+    @OneToMany(mappedBy = "evento")
+    private List<Ingresso> ingresso;
 
 
 }
