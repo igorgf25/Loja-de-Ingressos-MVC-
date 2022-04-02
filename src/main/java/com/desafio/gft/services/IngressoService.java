@@ -20,12 +20,16 @@ public class IngressoService {
     @Autowired
     UsuarioService usuarioService;
 
-    public Ingresso salvarIngresso(Evento evento, Integer quantidade) throws Exception {
+    @Autowired
+    EventoService eventoService;
+
+    public Ingresso salvarIngresso(Evento evento, Long quantidade) throws Exception {
         Ingresso ingresso = new Ingresso();
 
         ingresso.setEvento(evento);
         ingresso.setData(evento.getData());
         ingresso.setNome(evento.getNome());
+        ingresso.setHoras(evento.getHoras());
         ingresso.setQuantidade(quantidade);
 
         Usuario usuario;
@@ -42,6 +46,8 @@ public class IngressoService {
         BigDecimal valorTotal = evento.getValorIngresso().multiply(new BigDecimal(quantidade));
 
         ingresso.setValor(valorTotal);
+
+        eventoService.diminuirIngressos(evento.getId(), quantidade);
 
         return ingressoRepository.save(ingresso);
     }

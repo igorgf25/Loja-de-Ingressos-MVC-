@@ -35,7 +35,7 @@ public class Ingresso {
     private BigDecimal valor;
 
     @Min(value = 1)
-    private Integer quantidade;
+    private Long quantidade;
 
     @ManyToOne
     private Usuario usuario;

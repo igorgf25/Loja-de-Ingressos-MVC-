@@ -36,4 +36,14 @@ public class EventoService {
         eventoRepository.deleteById(id);
     }
 
+    public void diminuirIngressos(Long id, Long quantidade) {
+        Evento evento = eventoRepository.getById(id);
+
+        Long capacidadeFinal = evento.getCapacidade() - quantidade;
+
+        evento.setCapacidade(capacidadeFinal);
+
+        eventoRepository.save(evento);
+    }
+
 }

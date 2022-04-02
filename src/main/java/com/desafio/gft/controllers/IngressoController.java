@@ -52,7 +52,7 @@ public class IngressoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView finalizarCompra(Evento evento, @RequestParam("quantidade") Integer quantidade, RedirectAttributes redirectAttributes) throws Exception {
+    public ModelAndView finalizarCompra(Evento evento, @RequestParam("quantidade") Long quantidade, RedirectAttributes redirectAttributes) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/");
 
         Evento eventoSalvar;
