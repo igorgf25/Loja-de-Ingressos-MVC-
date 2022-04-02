@@ -20,6 +20,9 @@ public class Usuario implements UserDetails {
 
     private String senha;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Ingresso> ingressos;
+
     @ManyToMany
     @JoinTable(
             name = "usuarios_roles",

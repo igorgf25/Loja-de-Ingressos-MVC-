@@ -7,7 +7,10 @@
 <div layout:fragment="content">
     <div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}">
     </div>
-    <div class="card mb-4" style="margin-top:80px">
+    <div class="alert alert-primary" th:if="${#lists.isEmpty(listaCasa)}" style="margin-top:80px">
+        É necessario ter pelomenos uma casa de show para cadastrar um evento
+    </div>
+    <div th:if="${not #lists.isEmpty(listaCasa)}" class="card mb-4" style="margin-top:80px">
         <div class="card-header">
             <p class="text-center fs-4">Evento</p>
         </div>
@@ -74,6 +77,8 @@
             altField:"#data"
         });
         });
+
+
 
     </script>
 </div>

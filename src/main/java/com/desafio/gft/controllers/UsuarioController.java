@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -39,11 +38,12 @@ public class UsuarioController {
     @RequestMapping(path = "form", method = RequestMethod.POST)
     public ModelAndView salvarUsuario(@Valid Usuario usuario, BindingResult bindingResult) {
 
-        ModelAndView mv = new ModelAndView("usuario/form.html");
+        ModelAndView mv = new ModelAndView("usuario/login.html");
 
         if (bindingResult.hasErrors()) {
+            ModelAndView mvErro = new ModelAndView("usuario/form.html");
             mv.addObject("usuario", usuario);
-            return mv;
+            return mvErro;
         }
 
         Role role;
@@ -63,7 +63,7 @@ public class UsuarioController {
 
         usuarioService.salvarUsuario(usuario);
 
-        mv.addObject("usuario", new Usuario());
+        mv.addObject("mensagem", "Usuario administrador criado com sucesso");
         return mv;
     }
 
@@ -80,8 +80,9 @@ public class UsuarioController {
         ModelAndView mv = new ModelAndView("usuario/formAdmin.html");
 
         if (bindingResult.hasErrors()) {
+            ModelAndView mvErro = new ModelAndView("usuario/formadmin.html");
             mv.addObject("usuario", usuario);
-            return mv;
+            return mvErro;
         }
 
         Role role;
@@ -101,6 +102,7 @@ public class UsuarioController {
 
         usuarioService.salvarUsuario(usuario);
 
+        mv.addObject("mensagem", "Usuario administrador criado com sucesso");
         mv.addObject("usuario", new Usuario());
         return mv;
     }
