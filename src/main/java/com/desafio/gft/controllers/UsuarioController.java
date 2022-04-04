@@ -1,5 +1,6 @@
 package com.desafio.gft.controllers;
 
+import com.desafio.gft.entities.Ingresso;
 import com.desafio.gft.entities.Role;
 import com.desafio.gft.entities.Usuario;
 import com.desafio.gft.services.RoleService;
@@ -104,6 +105,19 @@ public class UsuarioController {
 
         mv.addObject("mensagem", "Usuario administrador criado com sucesso");
         mv.addObject("usuario", new Usuario());
+        return mv;
+    }
+
+    @RequestMapping("historico")
+    public ModelAndView historico() {
+        ModelAndView mv = new ModelAndView("usuario/historico.html");
+
+        List<Ingresso> listaIngressos;
+
+        Usuario usuario = usuarioService.buscarUsuarioLogado();
+
+        mv.addObject("listaIngressos", usuario.getIngressos());
+
         return mv;
     }
 }

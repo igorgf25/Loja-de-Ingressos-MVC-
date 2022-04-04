@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}"
+>
+<meta charset="UTF-8">
+<div layout:fragment="content">
+    <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${#lists.isEmpty(listaIngressos)}">
+        Nenhum ingresso comprado
+    </div>
+    <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+    <div id="eventos " class="row row-cols-4 mb-4" style="margin-top:80px;">
+        <div th:each="ingresso : ${listaIngressos}" class="col card mb-3 me-3" style="width: 20rem;">
+            <img th:src="@{/ticket.png}" class="img-thumbnail" alt="Imagem evento">
+            <div class="card-body" style="text-align: center; background-color: rgb(240,240,240);">
+                <h5 class="card-title" th:text="${ingresso.nome}"></h5>
+                <p class="card-text" th:text="'Data: ' + ${#dates.format(ingresso.data, 'dd/MM/yyyy')}"></p>
+                <p class="card-text" th:text="'Quantidade de ingressos comprados: ' + ${ingresso.quantidade}"></p>
+                <p class="card-text" th:text="'R$' + ${#numbers.formatDecimal(ingresso.valor, 0, 'POINT', 2, 'COMMA')}"></p>
+            </div>
+        </div>
+    </div>
+</div>
 
-</body>
 </html>

@@ -9,8 +9,8 @@
         Nenhum evento cadastrado
     </div>
     <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${mensagem != null}" th:text="${mensagem}"></div>
-    <div id="eventos " class="d-flex flex-row mb-4" style="margin-top:80px">
-        <div th:each="evento : ${listaEventos}" class="card mb-3 me-3" style="width: 18rem;">
+    <div id="eventos " class="row row-cols-3 mb-4" style="margin-top:80px">
+        <div th:each="evento : ${listaEventos}" class="col card mb-3 me-3" style="width: 22rem;">
             <img th:src="@{/evento/imagem(id=${evento.id})}" class="card-img-top" alt="Imagem evento">
             <div class="card-body" style="text-align: center">
                 <h5 class="card-title" th:text="${evento.nome}"></h5>
