@@ -25,6 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/casadeshow/**").hasRole("ADMIN")
                 .antMatchers("/usuario/formAdmin").hasRole("ADMIN")
                 .antMatchers("/usuario/form").permitAll()
+                .antMatchers("/popular").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll().successForwardUrl("/");
     }

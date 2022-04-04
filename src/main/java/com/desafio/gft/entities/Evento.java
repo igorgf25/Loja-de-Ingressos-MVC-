@@ -1,7 +1,9 @@
 package com.desafio.gft.entities;
 
 import com.desafio.gft.enums.GenerosMusicais;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,6 +17,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,5 +54,16 @@ public class Evento {
     @OneToMany(mappedBy = "evento")
     private List<Ingresso> ingresso;
 
-
+    public Evento(String nome, String descricao, Long capacidade, Date data, LocalTime horas, BigDecimal valorIngresso, GenerosMusicais estiloMusical, CasaDeShow casaDeShow, byte[] foto, List<Ingresso> ingresso) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.capacidade = capacidade;
+        this.data = data;
+        this.horas = horas;
+        this.valorIngresso = valorIngresso;
+        this.estiloMusical = estiloMusical;
+        this.casaDeShow = casaDeShow;
+        this.foto = foto;
+        this.ingresso = ingresso;
+    }
 }

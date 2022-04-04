@@ -1,6 +1,8 @@
 package com.desafio.gft.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +12,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CasaDeShow {
 
     @Id
@@ -24,4 +28,10 @@ public class CasaDeShow {
 
     @OneToMany(mappedBy = "casaDeShow")
     private List<Evento> eventos;
+
+    public CasaDeShow(String nome, String endereco, List<Evento> eventos) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.eventos = eventos;
+    }
 }
