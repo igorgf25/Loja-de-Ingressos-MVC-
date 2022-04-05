@@ -40,8 +40,6 @@ public class IngressoService {
             throw new Exception("Erro ao buscar usuario: " + e.getMessage());
         }
 
-        System.out.println(evento.getNome());
-
         BigDecimal valorTotal = evento.getValorIngresso().multiply(new BigDecimal(quantidade));
 
         ingresso.setValor(valorTotal);
