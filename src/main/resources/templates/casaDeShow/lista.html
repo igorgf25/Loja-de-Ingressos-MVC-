@@ -8,7 +8,11 @@
     <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${#lists.isEmpty(lista)}">
         Nenhuma casa de show cadastrada
     </div>
-    <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+    <div class="alert alert-primary mb-4" style="margin-top:80px; margin-bottom: -50px;" th:if="${mensagem != null}"
+         th:text="${mensagem}"></div>
+    <div class="text-center" style="margin-top:80px">
+        <h1 class="fs-1 fw-bold">Casas de Show Cadastradas</h1>
+    </div>
     <div class="mb-4" style="margin-top:80px" th:if="${not #lists.isEmpty(lista)}">
         <table class="table table-striped">
             <thead>
@@ -27,7 +31,7 @@
                 <td>
                     <a class="btn btn-primary btn-sm" th:href="@{/casadeshow/form(id=${casaDeShow.id})}">Editar</a>
                     <a class="btn btn-primary btn-sm" th:href="@{/casadeshow/excluir(id=${casaDeShow.id})}"
-                       onclick="return confirm('Você realmente deseja excluir essa casa de show?')">Excluir</a>
+                       onclick="return confirm('Você realmente deseja excluir essa casa de show? Obs: não é possivel excluir casas com shows agendados')">Excluir</a>
                 </td>
             </tr>
             </tbody>

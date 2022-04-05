@@ -8,7 +8,8 @@
     <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${#lists.isEmpty(listaIngressos)}">
         Nenhum ingresso comprado
     </div>
-    <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+    <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${mensagem != null}"
+         th:text="${mensagem}"></div>
     <div id="eventos " class="row row-cols-4 mb-4" style="margin-top:80px;">
         <div th:each="ingresso : ${listaIngressos}" class="col card mb-3 me-3" style="width: 20rem;">
             <img th:src="@{/ticket.png}" class="img-thumbnail" alt="Imagem evento">
@@ -16,7 +17,8 @@
                 <h5 class="card-title" th:text="${ingresso.nome}"></h5>
                 <p class="card-text" th:text="'Data: ' + ${#dates.format(ingresso.data, 'dd/MM/yyyy')}"></p>
                 <p class="card-text" th:text="'Quantidade de ingressos comprados: ' + ${ingresso.quantidade}"></p>
-                <p class="card-text" th:text="'R$' + ${#numbers.formatDecimal(ingresso.valor, 0, 'POINT', 2, 'COMMA')}"></p>
+                <p class="card-text"
+                   th:text="'R$' + ${#numbers.formatDecimal(ingresso.valor, 0, 'POINT', 2, 'COMMA')}"></p>
             </div>
         </div>
     </div>

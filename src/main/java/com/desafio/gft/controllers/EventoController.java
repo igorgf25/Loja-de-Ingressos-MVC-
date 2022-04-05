@@ -115,9 +115,9 @@ public class EventoController {
 
         try {
             eventoService.excluirEvento(id);
-            mv.addObject("mensagem", "Evento excluido com sucesso");
+            redirectAttributes.addFlashAttribute("mensagem", "Evento excluido com sucesso");
         } catch (Exception e) {
-            mv.addObject("mensagem", "Erro ao excluir evento: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("mensagem", "Erro ao excluir evento: " + e.getMessage());
         }
 
         return mv;

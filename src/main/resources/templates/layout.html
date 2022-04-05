@@ -57,11 +57,33 @@
                         </ul>
                     </li>
                 </ul>
-                <a class="btn btn-light d-flex" th:href="@{/logout}">Logout</a>
+                <a class="btn btn-light d-flex" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                   th:href="@{/logout}">Logout</a>
             </div>
         </div>
     </nav>
 </div>
+
+<!-- Modal -->
+<form method="get" th:action="@{/logout}">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sair</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja sair?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Sair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 <div id="conteudo" class="container" layout:fragment="content">
 
 </div>

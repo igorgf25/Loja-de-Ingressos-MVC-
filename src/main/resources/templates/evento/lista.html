@@ -6,9 +6,12 @@
 <meta charset="UTF-8">
 <div layout:fragment="content">
     <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${#lists.isEmpty(lista)}">
-        Nenhuma casa de show cadastrada
+        Nenhum evento cadastrado
     </div>
-    <div class="alert alert-primary mb-4" style="margin-top:80px" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+    <div class="alert alert-primary mb-4" style="margin-top:80px; margin-bottom: -50px;" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+    <div class="text-center" style="margin-top:80px">
+        <h1 class="fs-1 fw-bold">Eventos Cadastrados</h1>
+    </div>
     <div class="mb-4" style="margin-top:80px" th:if="${not #lists.isEmpty(lista)}">
         <table class="table table-striped">
             <thead>
@@ -17,6 +20,7 @@
                 <th>Nome</th>
                 <th>Capacidade</th>
                 <th>Data</th>
+                <th>Horario</th>
                 <th>Valor do Ingresso</th>
                 <th>Casa de Show</th>
                 <th>Genero</th>
@@ -29,12 +33,10 @@
                 <td th:text="${evento.nome}"></td>
                 <td th:text="${evento.capacidade}"></td>
                 <td th:text="${#dates.format(evento.data, 'dd/MM/yyyy')}"></td>
+                <td th:text="${#temporals.format(evento.horas, 'HH:mm')}"></td>
                 <td th:text="'R$' + ${#numbers.formatDecimal(evento.valorIngresso, 0, 'POINT', 2, 'COMMA')}"></td>
                 <td th:text="${evento.casaDeShow.nome}"></td>
                 <td th:text="${evento.estiloMusical.nome}"></td>
-                <!--                <td>-->
-                <!--                    <img alt="Imagem" th:src="@{/evento/imagem(id=${evento.id})}">-->
-                <!--                </td>-->
                 <td>
                     <a class="btn btn-primary btn-sm" th:href="@{/evento/form(id=${evento.id})}">Editar</a>
                     <a class="btn btn-primary btn-sm" th:href="@{/evento/excluir(id=${evento.id})}"

@@ -26,7 +26,6 @@ public class IngressoService {
     public Ingresso salvarIngresso(Evento evento, Long quantidade) throws Exception {
         Ingresso ingresso = new Ingresso();
 
-        ingresso.setEvento(evento);
         ingresso.setData(evento.getData());
         ingresso.setNome(evento.getNome());
         ingresso.setHoras(evento.getHoras());

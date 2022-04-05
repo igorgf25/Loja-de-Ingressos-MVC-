@@ -26,4 +26,8 @@ public class RoleService {
     public Role salvarRole(Role role) {
         return roleRepository.save(role);
     }
+
+    public Long contaRole() {
+        return roleRepository.count();
+    }
 }

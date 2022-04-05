@@ -51,10 +51,7 @@ public class Evento {
     @Lob
     private byte[] foto;
 
-    @OneToMany(mappedBy = "evento")
-    private List<Ingresso> ingresso;
-
-    public Evento(String nome, String descricao, Long capacidade, Date data, LocalTime horas, BigDecimal valorIngresso, GenerosMusicais estiloMusical, CasaDeShow casaDeShow, byte[] foto, List<Ingresso> ingresso) {
+    public Evento(String nome, String descricao, Long capacidade, Date data, LocalTime horas, BigDecimal valorIngresso, GenerosMusicais estiloMusical, CasaDeShow casaDeShow, byte[] foto) {
         this.nome = nome;
         this.descricao = descricao;
         this.capacidade = capacidade;
@@ -64,6 +61,5 @@ public class Evento {
         this.estiloMusical = estiloMusical;
         this.casaDeShow = casaDeShow;
         this.foto = foto;
-        this.ingresso = ingresso;
     }
 }

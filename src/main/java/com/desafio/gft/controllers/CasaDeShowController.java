@@ -86,9 +86,9 @@ public class CasaDeShowController {
 
         try {
             casaDeShowService.excluirCasaDeShow(id);
-            mv.addObject("mensagem", "Casa de show excluida com sucesso");
+            redirectAttributes.addFlashAttribute("mensagem", "Casa de show excluida com sucesso");
         } catch (Exception e) {
-            mv.addObject("mensagem", "Erro ao excluir casa de show: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("mensagem", "Erro ao excluir casa de show: " + e.getMessage());
         }
 
         return mv;

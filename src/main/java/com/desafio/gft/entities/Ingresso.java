@@ -40,7 +40,4 @@ public class Ingresso {
     @ManyToOne
     private Usuario usuario;
 
-    @ManyToOne
-    private Evento evento;
-
 }
